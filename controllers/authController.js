@@ -1,5 +1,5 @@
 import User from "../models/userModel.js";
-import config from "../config/index.js";
+// import config from "../config/index.js";
 
 import { checkFields } from "./handleFactory.js";
 import catchAsync from "../utils/catchAsync.js";
@@ -45,14 +45,15 @@ const createSendToken = async (user, statusCode, res) => {
 		), // Convert days to milliseconds
 		httpOnly: true, // Prevent JS access to cookie
 		secure: config.nodeENV === "production", // HTTPS only in production
-		sameSite: "strict", // CSRF protection
+		// sameSite: "strict", // CSRF protection
+		sameSite: "None", //  Needed for cross-origin requests
 	};
 
 	// Clear password from user object
 	user.password = undefined;
 
 	// Store refresh token in an HTTP-only cookie
-	res.cookie("jwtRefreshToken", refreshToken, cookieOptions);
+	// res.cookie("jwtRefreshToken", refreshToken, cookieOptions);
 
 	// Send response with access token
 	res.status(statusCode).json({
