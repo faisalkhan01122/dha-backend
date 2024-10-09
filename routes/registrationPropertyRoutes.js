@@ -19,7 +19,7 @@ router.route("/")
 
 router.route("/:id")
   .get(getRegistrationProperty)
-  .put(validateSchema(registrationPropertyValidation), updateRegistrationProperty)
+  .put(updateRegistrationProperty)
   .delete(deleteRegistrationProperty);
 
 export default router;

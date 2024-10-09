@@ -18,7 +18,7 @@ router.route("/")
 
 router.route("/:id")
   .get(getPurchaseProperty)
-  .put(validateSchema(purchasePropertyValidation), updatePurchaseProperty)
+  .put(updatePurchaseProperty)
   .delete(deletePurchaseProperty);
 
 export default router;
